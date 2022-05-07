@@ -1,12 +1,17 @@
 const net = require('net');
 
-const list = ['arroz', 'feijão']; // lista com produtos iniciais
+const list = ['pizza', 'macarronada']; // lista com produtos iniciais
 
 //funções que o usuário pode utilizar
 class Controller {
   // lista todos os produtos disponíveis
   listAll() {
     return console.log(list);
+  }
+  addList(){
+    campo = 'chocolate';
+    list.push(campo);
+    return socket.write('+OK\n');
   }
 }
 
@@ -27,6 +32,9 @@ const handleConnection = (socket) => {
     // se o usuário escrever "liste", listará todos os produtos
     if (str === 'liste') {
       controller.listAll();
+    }
+    if (str == 'adicione'){
+      controller.addList();
     }
   });
 };
